@@ -18,7 +18,7 @@ class matchsActions extends sfActions {
         $table = MatchsTable::getInstance();
         $this->pager = null;
         $this->pager = new sfDoctrinePager(
-                'Matchs', 12
+                'Matchs', 50
         );
         $this->pager->setQuery($query->andWhere("status >= ? AND status <= ?", array(Matchs::STATUS_NOT_STARTED, Matchs::STATUS_END_MATCH))->orderBy("status DESC"));
         $this->pager->setPage($request->getParameter('page', 1));
@@ -38,7 +38,7 @@ class matchsActions extends sfActions {
         $table = MatchsTable::getInstance();
         $this->pager = null;
         $this->pager = new sfDoctrinePager(
-                'Matchs', 12
+                'Matchs', 50
         );
         $this->pager->setQuery($query->andWhere("status = ?", Matchs::STATUS_ARCHIVE)->orderBy("id DESC"));
         $this->pager->setPage($request->getParameter('page', 1));
