@@ -3,6 +3,13 @@
 <script>
 $(document).ready(function(){
     initSocketIo(function(socket) {
+        $("#matchTable").tablesorter( {
+                cssHeader: "sorting",
+                cssAsc: "sorting_asc",
+                cssDesc: "sorting_desc",
+                headers: { 7: { sorter: false } },
+            }
+        );
         $("#refreshOffline").hide();
         $("#refreshOnline").show();
         socket.emit("identify", { type: "matchs" });
@@ -92,7 +99,7 @@ $(document).ready(function(){
 </div>
 
 <div id="tableMatch">
-    <table class="table table-striped">
+    <table id="matchTable" class="table table-striped">
         <tbody>
             <?php foreach ($pager->getResults() as $match): ?>
                 <?php

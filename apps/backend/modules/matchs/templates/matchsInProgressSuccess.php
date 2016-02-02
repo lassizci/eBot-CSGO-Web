@@ -24,6 +24,13 @@
         });
     }
     $(document).ready(function() {
+        $("#matchTable").tablesorter( {
+                cssHeader: "sorting",
+                cssAsc: "sorting_asc",
+                cssDesc: "sorting_desc",
+                headers: { 7: { sorter: false }, 9: { sorter: false } },
+            }
+        );
 		PNotify.desktop.permission(); 
         initSocketIo(function(socket) {            
             socket.emit("identify", {type: "matchs"});
@@ -261,7 +268,7 @@
 <div class="container-fluid">
     <div class="span10">
         <div id="tableMatch">
-            <table class="table table-striped">
+            <table class="table table-striped" id="matchTable">
                 <tbody>
                     <?php foreach ($pager->getResults() as $index => $match): ?>
                         <?php
